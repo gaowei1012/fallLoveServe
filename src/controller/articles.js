@@ -5,11 +5,17 @@
  * @param {ctx} ctx 
  */
 exports.createArticle = async ctx => {
-    //const create_time = new Date.now()
-    const result = {
-        code:  1,
-        // create_at: create_time
-    }
+    const data = [
+        {
+             id: 1,
+             test: '测试数据'
+        }
+     ]
+     const result = {
+         code: 1,
+         message: '请求成功',
+         data
+     }
     ctx.body = result
 }
 
@@ -19,9 +25,17 @@ exports.createArticle = async ctx => {
  * @param {*} ctx 
  */
 exports.deleteArticle = async ctx => {
-    const result = {
-        coed: 1
-    }
+    const data = [
+        {
+             id: 1,
+             test: '测试数据'
+        }
+     ]
+     const result = {
+         code: 1,
+         message: '请求成功',
+         data
+     }
     ctx.body = result
 }
 
@@ -30,9 +44,17 @@ exports.deleteArticle = async ctx => {
  * @param {*} ctx 
  */
 exports.exitArticle = async ctx => {
-    const result = {
-        code: 1
-    }
+    const data = [
+        {
+             id: 1,
+             test: '测试数据'
+        }
+     ]
+     const result = {
+         code: 1,
+         message: '请求成功',
+         data
+     }
     ctx.body = result
 }
 
@@ -41,9 +63,17 @@ exports.exitArticle = async ctx => {
  */
 
 exports.searchArticle = async ctx => {
-    const result = {
-        code: 1
-    }
+    const data = [
+        {
+             id: 1,
+             test: '测试数据'
+        }
+     ]
+     const result = {
+         code: 1,
+         message: '请求成功',
+         data
+     }
     ctx.body = result
 }
 
@@ -52,9 +82,17 @@ exports.searchArticle = async ctx => {
  */
 
 exports.createComment = async ctx => {
-    const result = {
-        code: 1
-    }
+    const data = [
+        {
+             id: 1,
+             test: '测试数据'
+        }
+     ]
+     const result = {
+         code: 1,
+         message: '请求成功',
+         data
+     }
     ctx.body = result
 }
 
