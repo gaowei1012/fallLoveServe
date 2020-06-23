@@ -2,6 +2,7 @@ const Koa = require('koa')
 const session = require('koa-session-minimal')
 const MysqlStore = require('koa-mysql-session')
 const bodyParser = require('koa-bodyparser')
+const logger = require('koa-logger')
 
 const app = new Koa()
 const {database,port,host} = require('./config/default')
@@ -21,6 +22,8 @@ app.use(session({
 app.use(bodyParser({
     formLimit: '1mb'
 }))
+
+app.use(logger())
 
 app.use(require('./route/login').routes())
 app.use(require('./route/register').routes())
