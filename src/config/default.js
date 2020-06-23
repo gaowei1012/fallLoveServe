@@ -1,7 +1,7 @@
 
 // config 
 const config = {
-    port: 3040,
+    port: 8080,
     host: '127.0.0.1',
     database: {
         DATABASE: 'fallLove',
