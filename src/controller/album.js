@@ -16,6 +16,21 @@ exports.uploadAlbum = async (ctx, next) => {
     ctx.body = result
 }
 
+/**
+ * 上传视频
+ * @param {ctx}} ctx 
+ */
+exports.uploadVideo = async ctx => {
+    const data = ctx.request.body;
+    
+    const result = {
+        code: 1,
+        message: '请求成功',
+        data: [data]
+    }
+    ctx.body = result
+}
+
 
 /**
  * 删除照片
