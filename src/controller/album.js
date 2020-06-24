@@ -22,11 +22,13 @@ exports.uploadAlbum = async (ctx, next) => {
  * @param {*} ctx 
  */
 exports.deleteAlbum = async ctx => {
+
+    const data = ctx.request.body;
    
     const result = {
         code: 1,
         message: '请求成功',
-        data: []
+        data: [data]
     }
     ctx.body = result
 }
