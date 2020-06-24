@@ -5,16 +5,11 @@
  * @param {ctx}} ctx 
  */
 exports.uploadAlbum = async ctx => {
-    const data = [
-       {
-            id: 1,
-            test: '测试数据'
-       }
-    ]
+    
     const result = {
         code: 1,
         message: '请求成功',
-        data
+        data: []
     }
     ctx.body = result
 }
@@ -25,16 +20,11 @@ exports.uploadAlbum = async ctx => {
  * @param {*} ctx 
  */
 exports.deleteAlbum = async ctx => {
-    const data = [
-        {
-             id: 1,
-             test: '测试数据'
-        }
-     ]
+   
     const result = {
         code: 1,
         message: '请求成功',
-        data
+        data: []
     }
     ctx.body = result
 }
@@ -45,16 +35,11 @@ exports.deleteAlbum = async ctx => {
  * @param {*} ctx 
  */
 exports.getPhotoList = async ctx => {
-    const data = [
-        {
-             id: 1,
-             test: '测试数据'
-        }
-     ]
+    
     const result = {
         code: 1,
         message: '请求成功',
-        data
+        data: []
     }
     ctx.body = result
 }
@@ -65,16 +50,11 @@ exports.getPhotoList = async ctx => {
  * @param {*} ctx 
  */
 exports.createAlbumFile = async ctx => {
-    const data = [
-        {
-             id: 1,
-             test: '测试数据'
-        }
-     ]
+
     const result = {
         code: 1,
         message: '请求成功',
-        data
+        data: []
     }
     ctx.body = result
 }
