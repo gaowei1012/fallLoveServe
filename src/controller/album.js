@@ -4,12 +4,14 @@
  * 上传照片
  * @param {ctx}} ctx 
  */
-exports.uploadAlbum = async ctx => {
+exports.uploadAlbum = async (ctx, next) => {
+    
+    const data = ctx.request.body;
     
     const result = {
         code: 1,
         message: '请求成功',
-        data: []
+        data: [data]
     }
     ctx.body = result
 }

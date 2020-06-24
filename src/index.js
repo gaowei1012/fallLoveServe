@@ -19,9 +19,7 @@ app.use(session({
     store: new MysqlStore(sessionMysqlConfig)
 }))
 
-app.use(bodyParser({
-    formLimit: '1mb'
-}))
+app.use(bodyParser())
 
 app.use(logger())
 
