@@ -2,7 +2,7 @@
 
 /**
  * 上传照片
- * @param {ctx}} ctx 
+ * @param {ctx} ctx 
  */
 exports.uploadAlbum = async (ctx, next) => {
     
@@ -49,7 +49,9 @@ exports.getPhotoList = async ctx => {
 }
 
 
+
 /**
+ * delete
  * 创建相册文件夹
  * @param {*} ctx 
  */

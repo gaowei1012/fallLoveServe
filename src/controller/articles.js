@@ -5,11 +5,17 @@
  * @param {ctx} ctx 
  */
 exports.createArticle = async ctx => {
-    
+    const {title, auator, content, date, } = ctx.request.body
+    const data = {
+        "title": title,
+        'auator': auator,
+        'content': content,
+        'date': date
+    }
      const result = {
          code: 1,
          message: '请求成功',
-         data: []
+         data: [data]
      }
     ctx.body = result
 }
@@ -20,11 +26,14 @@ exports.createArticle = async ctx => {
  * @param {*} ctx 
  */
 exports.deleteArticle = async ctx => {
-    
+    const {id} = ctx.request.body
+    const data = {
+        'id': id
+    }
      const result = {
          code: 1,
          message: '请求成功',
-         data: []
+         data: [data]
      }
     ctx.body = result
 }
@@ -48,12 +57,12 @@ exports.exitArticle = async ctx => {
  */
 
 exports.searchArticle = async ctx => {
-    
-     const result = {
-         code: 1,
-         message: '请求成功',
-         data: []
-     }
+    const id = ctx.request.body
+    const result = {
+        code: 1,
+        message: '请求成功',
+        data: [id]
+    }
     ctx.body = result
 }
 
@@ -63,11 +72,11 @@ exports.searchArticle = async ctx => {
 
 exports.createComment = async ctx => {
     
-     const result = {
-         code: 1,
-         message: '请求成功',
-         data: []
-     }
+    const result = {
+        code: 1,
+        message: '请求成功',
+        data: []
+    }
     ctx.body = result
 }
 
