@@ -65,4 +65,16 @@ exports.insterCommetData=(val)=> {
     return query(_sql, val)
 }
 
-// 查询评论
+// 查询所有评论
+exports.searchCommentById=(val)=> {
+    const {id} = val;
+    const _sql = `select * from articles where commentId=${id};`;
+    return query(_sql, val)
+}
+
+// 删除评论（用户登录）
+exports.deleteCommentById=(val)=> {
+    const {id} = val
+    const _sql = `select * from articles where commentId=${id};`;
+    return query(_sql, val)
+}

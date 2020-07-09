@@ -3,6 +3,9 @@
 /**
  * 上传照片
  * @param {ctx} ctx 
+ * @type 0 视频 & 1 照片 根据类型判断
+ * 上传照片到oss
+ * formdata格式
  */
 exports.uploadAlbum = async (ctx, next) => {
     
@@ -35,6 +38,7 @@ exports.uploadVideo = async ctx => {
 /**
  * 删除照片
  * @param {*} ctx 
+ * @type 0 视频 & 1 照片 根据类型判断
  */
 exports.deleteAlbum = async ctx => {
 
@@ -79,3 +83,5 @@ exports.createAlbumFile = async ctx => {
     }
     ctx.body = result
 }
+
+

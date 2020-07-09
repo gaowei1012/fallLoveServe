@@ -37,9 +37,19 @@ const comment = `
     );
 `
 
+const album = `
+    create table if not exists album(
+        id INT NOT NULL AUTO_INCREMENT,
+        pri_url VARCHART(255) NOT NULL COMMENT '照片地址',
+        create_at VARCHAR(100) NOT NULL COMMENT '照片上传时间',
+        PRIMARY KEY(id)
+    )
+`
+
 module.exports = {
     articles,
     banner,
     users,
     comment,
+    album,
 }
