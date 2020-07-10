@@ -1,6 +1,6 @@
 const mysql = require('mysql')
 const {database} = require('../config/default')
-const {articles, banner, users, comment} = require('./init')
+const {users, comment, album, article} = require('./init')
 
 const pool = mysql.createPool({
     host        :   database.HOST,
@@ -36,45 +36,67 @@ const createTable = (sql) => {
 
 // 创建表
 createTable(users)
-createTable(banner)
-createTable(articles)
 createTable(comment)
+createTable(album)
+createTable(article)
 
 // 用户注册
 exports.insterData = (val) => {
-    const _sql = "inster into users set mobile=?, username=?, password=?, create_at=?;"
+    const _sql = "inster into users set mobile=?, avatar=?, username=?, password=?, create_at=?;"
     return query(_sql, val)
 }
 
 // 用户登录
-exports.login = (val) => {
+exports.findUserData = (val) => {
     const {username, password} = val
-    const _sql = `select * from users where username=${username}, password=${password};`
-    return query(_sql, val)
-}
-
-// 查询banner数据
-exports.queryBanner = () => {
-    const _sql = `select * from banner;`
+    let _sql = `select * from users where username=${username}, password=${password};`
     return query(_sql)
 }
 
-// 增加评论
-exports.insterCommetData=(val)=> {
-    const _sql = "inster into commet set content=?, avatar=?, username=?, create_at=?;"
+// 发表文章
+exports.insterArticleData=(val)=> {
+    let _sql = "insert into article set title=?,content=?,create_at=?;"
+    return query(_sql, val) 
+}
+
+// 查询所有文章
+exports.findArticelAll=()=> {
+    let _sql = "select * from article;";
+    return query(_sql)
+}
+
+// 删除文章
+exports.deleteArticleById = (id) => {
+    let _sql = `delete from article where id=${id};`;
+    return query(_sql)
+}
+
+// 编辑文章
+exports.updateArticleById=(val)=> {
+    let _sql = `update article set title=?,content=? where id=?;`;
+    return query(_sql, val)
+}
+
+// 通过id查找文章
+exports.findArticelById=(id)=> {
+    let _sql = `select * from article where id=${id};`;
+    return query(_sql)
+}
+
+// 发表评论
+exports.insterCommentData=(val)=> {
+    const _sql = "insert into comment set content=?, avatar=?, username=?, create_at=?;"
     return query(_sql, val)
 }
 
 // 查询所有评论
-exports.searchCommentById=(val)=> {
-    const {id} = val;
-    const _sql = `select * from articles where commentId=${id};`;
-    return query(_sql, val)
+exports.findComment=()=> {
+    const _sql = `select * from comment;`;
+    return query(_sql)
 }
 
-// 删除评论（用户登录）
-exports.deleteCommentById=(val)=> {
-    const {id} = val
-    const _sql = `select * from articles where commentId=${id};`;
-    return query(_sql, val)
+// 删除评论
+exports.deleteCommentById=(id)=> {
+    const _sql = `delete from comment where id=${id};`;
+    return query(_sql)
 }

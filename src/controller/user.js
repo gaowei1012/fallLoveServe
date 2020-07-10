@@ -4,6 +4,7 @@
  * @param {*} ctx 
  */
 exports.register = async ctx => {
+    const {username,password,mobile} = ctx.request.body;
     const result = {
         code: 1
     }

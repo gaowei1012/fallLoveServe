@@ -23,9 +23,6 @@ app.use(bodyParser())
 
 app.use(logger())
 
-app.use(require('./route/login').routes())
-app.use(require('./route/register').routes())
-app.use(require('./route/banner').routes())
 app.use(require('./route/upLoad').routes())
 app.use(require('./route/articles').routes())
 app.use(require('./route/album').routes())
