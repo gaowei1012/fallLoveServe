@@ -1,14 +1,25 @@
-
+const UserModal = require('../db/mysql')
 /**
- * z注册
+ * 注册
  * @param {*} ctx 
  */
 exports.register = async ctx => {
-    const {username,password,mobile} = ctx.request.body;
-    const result = {
-        code: 1
-    }
-    ctx.body = result
+    const {mobile,avatar,username,password} = ctx.request.body;
+    let create_at = new Date();
+    console.log('username', username)
+    await UserModal.insterUserData([username,password,mobile,avatar,create_at])
+        .then(result => {
+            ctx.body = {
+                code: 200,
+                message: '注册成功'
+            }
+        })
+        .catch(err => {
+            ctx.body = {
+                code: 500,
+                message: '注册失败'
+            }
+        })
 }
 
 /**
@@ -16,10 +27,21 @@ exports.register = async ctx => {
  * @param {*} ctx 
  */
 exports.login = async ctx => {
-    const result = {
-        code: 1
-    }
-    ctx.body = result
+    const {username} = ctx.request.body;
+    await UserModal.findUserData(username)
+        .then(result => {
+            ctx.body = {
+                code: 200,
+                message: 'ok',
+                data: result
+            }
+        })
+        .catch(err => {
+            ctx.body = {
+                code: 500,
+                message: `err: ${err}`
+            }
+        })
 }
 
 /**

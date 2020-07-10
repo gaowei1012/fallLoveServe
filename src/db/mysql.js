@@ -41,15 +41,17 @@ createTable(album)
 createTable(article)
 
 // 用户注册
-exports.insterData = (val) => {
-    const _sql = "inster into users set mobile=?, avatar=?, username=?, password=?, create_at=?;"
+exports.insterUserData = (val) => {
+    console.log('val', val)
+    const _sql = "insert into users set username=?,password=?,mobile=?,avatar=?,create_at=?;"
     return query(_sql, val)
 }
 
 // 用户登录
-exports.findUserData = (val) => {
-    const {username, password} = val
-    let _sql = `select * from users where username=${username}, password=${password};`
+exports.findUserData = (username) => {
+    // const {username, password} = val
+    console.log('username', username)
+    let _sql = `select * from users where username=${username};`
     return query(_sql)
 }
 

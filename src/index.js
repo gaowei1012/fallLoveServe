@@ -26,6 +26,7 @@ app.use(logger())
 app.use(require('./route/upLoad').routes())
 app.use(require('./route/articles').routes())
 app.use(require('./route/album').routes())
+app.use(require('./route/user').routes())
 
 app.listen(port, () => {
     console.log(`http://${host}:${port}`)
