@@ -1,8 +1,17 @@
 
 const UserModal = require('../db/mysql')
 /**
- * 发表文章
- * @param {ctx} ctx 
+ * @swagger
+ *
+ * /createArticle/:
+ *   
+ * post:
+ *     description: get all users
+ *     produces:
+ *       - application/json
+ *     responses:
+ *       200:
+ *         description: get all users
  */
 exports.createArticle = async ctx => {
     const {title,content} = ctx.request.body;
@@ -25,8 +34,17 @@ exports.createArticle = async ctx => {
 
 
 /**
- * 删除文章
- * @param {*} ctx 
+ * @swagger
+ *
+ * /deleteArticle/:
+ *   
+ * post:
+ *     description: get all users
+ *     produces:
+ *       - application/json
+ *     responses:
+ *       200:
+ *         description: get all users
  */
 exports.deleteArticle = async ctx => {
     const {id} = ctx.request.body;
@@ -47,8 +65,17 @@ exports.deleteArticle = async ctx => {
 }
 
 /**
- * 编辑文章
- * @param {*} ctx 
+ * @swagger
+ *
+ * /eitdArticle/:
+ *   
+ * post:
+ *     description: get all users
+ *     produces:
+ *       - application/json
+ *     responses:
+ *       200:
+ *         description: get all users
  */
 exports.eitdArticle = async ctx => {
    const {id} = ctx.request.body;
