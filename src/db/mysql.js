@@ -55,6 +55,12 @@ exports.findUserData = (username) => {
     return query(_sql)
 }
 
+// 查找用户
+exports.findUserInfo = (username) => {
+    let _sql = `select * from users where username=${username};`
+    return query(_sql)
+}
+
 // 发表文章
 exports.insterArticleData=(val)=> {
     let _sql = "insert into article set title=?,content=?,create_at=?;"

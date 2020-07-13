@@ -60,10 +60,21 @@ exports.getCode = async ctx => {
  * @param {*} ctx 
  */
 exports.getUserInfo = async ctx => {
-    const result = {
-        code: 1
-    }
-    ctx.body = result
+    const {username} = ctx.request.body;
+    await UserModal.findUserInfo(username)
+        .then(result => {
+            ctx.body = {
+                code: 200,
+                message: 'ok',
+                data: result[0]
+            }
+        })
+        .catch(err => {
+            ctx.body = {
+                code: 500,
+                message: `err:${err}`
+            }
+        })
 }
 
 /**
