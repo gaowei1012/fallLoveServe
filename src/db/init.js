@@ -14,7 +14,7 @@ const users = `
         avatar VARCHAR(100) NOT NULL COMMENT '用户头像',
         create_at VARCHAR(100) NOT NULL COMMENT '用户创建时间',
         PRIMARY KEY(id)
-    );
+    ) character set = utf8;
 `
 
 const comment = `
@@ -25,7 +25,7 @@ const comment = `
         username VARCHAR(100) NOT NULL COMMENT '评论者用户名',
         create_at VARCHAR(100) NOT NULL COMMENT '评论创建时间',
         PRIMARY KEY(id)
-    );
+    ) character set = utf8;
 `
 
 const album = `
@@ -35,7 +35,7 @@ const album = `
         file_type VARCHAR(100) NOT NULL COMMENT '相册类型（可选）',
         create_at VARCHAR(100) NOT NULL COMMENT '照片上传时间',
         PRIMARY KEY(id)
-    )
+    ) character set = utf8;
 `
 
 const article = `
@@ -45,7 +45,7 @@ const article = `
         content VARCHAR(255) NOT NULL COMMENT '文章内容',
         create_at VARCHAR(100) NOT NULL COMMENT '文章发表时间',
         PRIMARY KEY(id)
-    )
+    ) character set = utf8;
 `
 
 module.exports = {
