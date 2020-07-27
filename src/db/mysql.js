@@ -80,9 +80,10 @@ exports.deleteArticleById = (id) => {
 }
 
 // 编辑文章
-exports.updateArticleById=(val)=> {
-    let _sql = `update article set title=?,content=? where id=?;`;
-    return query(_sql, val)
+exports.updateArticleById=(title,content,id)=> {
+    // console.log('udapte', title)
+    let _sql = `update article set title=${title} and content=${content} where id=${id};`;
+    return query(_sql)
 }
 
 // 通过id查找文章

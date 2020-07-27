@@ -77,8 +77,8 @@ exports.deleteArticle = async ctx => {
  *         description: get all users
  */
 exports.eitdArticle = async ctx => {
-   const {id} = ctx.request.body;
-   //await UserModal.updateArticleById([id])
+   const {title,content,id} = ctx.request.body;
+   await UserModal.updateArticleById(title,content,id)
      const result = {
          code: 1,
          message: '请求成功',
@@ -86,7 +86,6 @@ exports.eitdArticle = async ctx => {
      }
     ctx.body = result
 }
-
 /**
  * 通过id查找文章
  * @param {*} ctx 
