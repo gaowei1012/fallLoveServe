@@ -94,10 +94,10 @@ exports.fotgetPassword = async ctx => {
  * @param {*} ctx 
  */
 exports.wxLogin = async ctx => {
-    const {appid, appsecret, code} = ctx.request.body;
+    const {code} = ctx.request.body;
     const result = {
         code: 1,
-        data: [{appid: appid, appsecret:appsecret, code: code}]
+        data: [{code: code}]
     }
     ctx.body = result
 }
