@@ -133,3 +133,23 @@ exports.createAlbumFile = async ctx => {
 }
 
 
+/**
+ * 删除单个照片
+ */
+exports.deleteAPhoto = async (ctx, next) => {
+    const {id} = ctx.request.body;
+    await UserModal.deletePhotoById(id)
+        .then(res => {
+            ctx.body = {
+                code: 200,
+                message: '删除成功'
+            }
+        })
+        .catch(err => {
+            ctx.body = {
+                code: 500,
+                message: `删除失败:${err}`
+            }
+        })
+}
+

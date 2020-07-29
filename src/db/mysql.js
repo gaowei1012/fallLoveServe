@@ -115,3 +115,10 @@ exports.findAllPhoto=()=> {
     const _sql = 'select * from album;';
     return query(_sql)
 }
+
+
+//  删除单个照片
+exports.deletePhotoById=(id)=> {
+    const _sql = `select album where id=${id};`;
+    return query(_sql)
+}
