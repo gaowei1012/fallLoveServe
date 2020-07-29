@@ -1,7 +1,8 @@
 const Koa = require('koa')
 const session = require('koa-session-minimal')
 const MysqlStore = require('koa-mysql-session')
-const bodyParser = require('koa-bodyparser')
+// const bodyParser = require('koa-bodyparser')
+const koaBody = require('koa-body')({multipart: true}) // 支持上传多个文件
 const logger = require('koa-logger')
 const KoaSwagger = require('koa2-swagger-ui')
 const swagger = require('./utils/swagger')
@@ -28,7 +29,9 @@ app.use(KoaSwagger({
     }
 }))
 
-app.use(bodyParser())
+// 为了能拿到 form data 中的数据， 使用 koa-body 代替 koa-bodyparser 
+// app.use(bodyParser())
+app.use(koaBody())
 
 app.use(logger())
 
