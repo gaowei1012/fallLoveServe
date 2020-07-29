@@ -48,9 +48,20 @@ const article = `
     ) character set = utf8;
 `
 
+const video = `
+    create table if not exists video(
+        id INT NOT NULL AUTO_INCREMENT,
+        video_url VARCHAR(255) NOT NULL COMMENT '视频地址',
+        create_at VARCHAR(100) NOT NULL COMMENT '视频上传时间',
+        PRIMARY KEY(id)
+    ) character set = utf8;
+
+`
+
 module.exports = {
     users,
     comment,
     album,
     article,
+    video,
 }

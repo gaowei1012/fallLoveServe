@@ -1,6 +1,6 @@
 const mysql = require('mysql')
 const {database} = require('../config/default')
-const {users, comment, album, article} = require('./init')
+const {users, comment, album, article, video} = require('./init')
 
 const pool = mysql.createPool({
     host        :   database.HOST,
@@ -39,6 +39,7 @@ createTable(users)
 createTable(comment)
 createTable(album)
 createTable(article)
+createTable(video)
 
 // 用户注册
 exports.insterUserData = (val) => {
@@ -122,3 +123,16 @@ exports.deletePhotoById=(id)=> {
     const _sql = `select album where id=${id};`;
     return query(_sql)
 }
+
+// 获取所有视频
+exports.findAllVideo=()=> {
+    const _sql = `select * from video;`;
+    return query(_sql)
+}
+
+// 删除单个视频
+exports.deleteVideoById = (id) => {
+    const _sql = `select video where id=${id};`;
+    return query(_sql)
+}
+
