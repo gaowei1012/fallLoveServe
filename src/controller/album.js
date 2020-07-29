@@ -1,4 +1,32 @@
+const UserModal = require('../db/mysql')
 
+const fs = require('fs')
+
+const co = require('co')
+const OSS = require('ali-oss')
+
+const multer = require('multer')
+
+let client = new OSS({
+    region: 'oss-cn-hangzhou',
+    accessKeyId: '****',
+    accessKeySecret: '****'
+})
+
+let ali_oss = {
+    bucket: 'myfallolove',  //阿里云您的bucket
+    endPoint: 'oss-cn-hangzhou.aliyuncs.com', //填写你开通的oss地址
+}
+
+
+exports.getAllPhoto = async (ctx, next) => {
+    ctx.body = {
+        code: 1,
+        message: 'sss'
+    }
+
+    await next
+}
 
 /**
  * 上传照片
@@ -8,7 +36,13 @@
  * formdata格式
  */
 exports.uploadAlbum = async (ctx, next) => {
-    
+
+    const file = ctx.request.body;
+    console.log('文件---文件', file)
+
+    // 图片上传
+    let upload = multer({ dest: './tmp/' })
+
     const data = ctx.request.body;
     
     const result = {
@@ -17,6 +51,8 @@ exports.uploadAlbum = async (ctx, next) => {
         data: [data]
     }
     ctx.body = result
+
+    await next
 }
 
 /**

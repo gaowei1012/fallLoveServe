@@ -31,7 +31,7 @@ const comment = `
 const album = `
     create table if not exists album(
         id INT NOT NULL AUTO_INCREMENT,
-        pri_url VARCHAR(255) NOT NULL COMMENT '照片地址',
+        pri_url VARCHAR(255) NOT NULL COMMENT '照片地址(可选)',
         file_type VARCHAR(100) NOT NULL COMMENT '相册类型（可选）',
         create_at VARCHAR(100) NOT NULL COMMENT '照片上传时间',
         PRIMARY KEY(id)

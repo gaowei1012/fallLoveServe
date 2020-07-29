@@ -109,3 +109,9 @@ exports.deleteCommentById=(id)=> {
     const _sql = `delete from comment where id=${id};`;
     return query(_sql)
 }
+
+// 查询用户所有相册相片
+exports.findAllAlbumFile=()=> {
+    const _sql = 'select * from album;';
+    return query(_sql)
+}
