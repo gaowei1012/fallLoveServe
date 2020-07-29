@@ -5,7 +5,8 @@ const VideoModal = require('../db/mysql')
 exports.uplodaVideo = async (ctx, next) => {
     ctx.body = {
         code: 200,
-        message: '上传成功'
+        message: '上传成功',
+        data: [ctx.request.body]
     }
 
     await next()
