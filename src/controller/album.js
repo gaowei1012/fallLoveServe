@@ -68,22 +68,6 @@ exports.uploadAlbum = async (ctx, next) => {
 }
 
 /**
- * 上传视频
- * @param {ctx}} ctx 
- */
-exports.uploadVideo = async ctx => {
-    const data = ctx.request.body;
-    
-    const result = {
-        code: 1,
-        message: '请求成功',
-        data: [data]
-    }
-    ctx.body = result
-}
-
-
-/**
  * 删除照片
  * @param {*} ctx 
  * @type 0 视频 & 1 照片 根据类型判断
