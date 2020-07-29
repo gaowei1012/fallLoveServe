@@ -28,8 +28,7 @@ exports.addReminders = async (ctx, next) => {
         .then(res => {
             ctx.body = {
                 code: 200,
-                message: '请求成功',
-                data: res
+                message: '添加成功'
             }
         })
         .catch(err => {
@@ -46,11 +45,12 @@ exports.addReminders = async (ctx, next) => {
 // 删除提醒
 exports.deleteReminders = async (ctx, next) => {
     const {id} = ctx.request.body;
+    console.log('删除的id', id)
     await RemindersModal.deleteRemindersById(id)
         .then(res => {
             ctx.body = {
                 code: 200,
-                message: '请求成功',
+                message: '删除成功',
                 //data: res
             }
         })

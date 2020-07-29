@@ -121,7 +121,7 @@ exports.findAllPhoto=()=> {
 
 //  删除单个照片
 exports.deletePhotoById=(id)=> {
-    const _sql = `delete album where id=${id};`;
+    const _sql = `delete from album where id=${id};`;
     return query(_sql)
 }
 
@@ -133,20 +133,20 @@ exports.findAllVideo=()=> {
 
 // 删除单个视频
 exports.deleteVideoById = (id) => {
-    const _sql = `select video where id=${id};`;
+    const _sql = `select from video where id=${id};`;
     return query(_sql)
 }
 
 
 // 查找所有提醒事项
 exports.findAllReminders=()=> {
-    const _sql = `select * form reminders;`
+    const _sql = `select * from reminders;`
     return query(_sql)
 }
 
 // 删除单个提醒事项
 exports.deleteRemindersById=(id)=> {
-    const _sql = `delete reminders where id=${id};`
+    const _sql = `delete from reminders where id=${id};`
     return query(_sql)
 }
 
