@@ -3,6 +3,9 @@ const VideoModal = require('../db/mysql')
 
 // 上传视频
 exports.uplodaVideo = async (ctx, next) => {
+
+    console.log('response', ctx.request.body)
+
     ctx.body = {
         code: 200,
         message: '上传成功',
