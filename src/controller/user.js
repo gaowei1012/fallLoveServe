@@ -1,4 +1,5 @@
-const UserModal = require('../db/mysql')
+const UserModal = require('../db/mysql');
+const co = require('co');
 /**
  * 注册
  * @param {*} ctx 
@@ -93,8 +94,10 @@ exports.fotgetPassword = async ctx => {
  * @param {*} ctx 
  */
 exports.wxLogin = async ctx => {
+    const {appid, appsecret, code} = ctx.request.body;
     const result = {
-        code: 1
+        code: 1,
+        data: [{appid: appid, appsecret:appsecret, code: code}]
     }
     ctx.body = result
 }
