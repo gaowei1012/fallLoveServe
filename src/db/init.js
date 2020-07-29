@@ -58,10 +58,21 @@ const video = `
 
 `
 
+const reminders = `
+    create table if not exists reminders(
+        id INT NOT NULL AUTO_INCREMENT,
+        title VARCHAR(100) NOT NULL COMMENT '提醒标题',
+        content VARCHAR(255) NOT NULL COMMENT '提醒内容',
+        create_at VARCHAR(100) NOT NULL COMMENT '创建时间',
+        PRIMARY KEY(id)
+    ) character set = utf8;
+`
+
 module.exports = {
     users,
     comment,
     album,
     article,
     video,
+    reminders
 }

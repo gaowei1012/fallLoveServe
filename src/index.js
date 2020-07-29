@@ -44,6 +44,7 @@ app.use(require('./route/user').routes())
 app.use(require('./route/wather').routes())
 app.use(require('./route/constellation').routes())
 app.use(require('./route/video').routes())
+app.use(require('./route/reminders').routes())
 
 app.listen(port, () => {
     console.log(`http://${host}:${port}`)

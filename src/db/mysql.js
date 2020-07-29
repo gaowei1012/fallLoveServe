@@ -1,6 +1,6 @@
 const mysql = require('mysql')
 const {database} = require('../config/default')
-const {users, comment, album, article, video} = require('./init')
+const {users, comment, album, article, video, reminders} = require('./init')
 
 const pool = mysql.createPool({
     host        :   database.HOST,
@@ -40,6 +40,7 @@ createTable(comment)
 createTable(album)
 createTable(article)
 createTable(video)
+createTable(reminders)
 
 // 用户注册
 exports.insterUserData = (val) => {
@@ -120,7 +121,7 @@ exports.findAllPhoto=()=> {
 
 //  删除单个照片
 exports.deletePhotoById=(id)=> {
-    const _sql = `select album where id=${id};`;
+    const _sql = `delete album where id=${id};`;
     return query(_sql)
 }
 
@@ -136,3 +137,21 @@ exports.deleteVideoById = (id) => {
     return query(_sql)
 }
 
+
+// 查找所有提醒事项
+exports.findAllReminders=()=> {
+    const _sql = `select * form reminders;`
+    return query(_sql)
+}
+
+// 删除单个提醒事项
+exports.deleteRemindersById=(id)=> {
+    const _sql = `delete reminders where id=${id};`
+    return query(_sql)
+}
+
+// 添加提醒事项
+exports.insterReminders=(val)=> {
+    const _sql = 'insert into reminders set title=?,content=?,create_at=?;'
+    return query(_sql,val)
+}
