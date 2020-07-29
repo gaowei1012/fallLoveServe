@@ -1,5 +1,10 @@
 const UserModal = require('../db/mysql');
 const co = require('co');
+const wx = require('../config/wx')
+const request = require('request')
+const axios = require('axios')
+const qs = require('qs')
+
 /**
  * 注册
  * @param {*} ctx 
@@ -93,12 +98,44 @@ exports.fotgetPassword = async ctx => {
  * 微信登录
  * @param {*} ctx 
  */
-exports.wxLogin = async ctx => {
+exports.wxLogin = async (ctx, next) => {
     const {code} = ctx.request.body;
-    const result = {
-        code: 1,
-        data: [{code: code}]
+
+    let options = {
+        method: 'POST',
+        url: 'https://api.weixin.qq.com/sns/jscode2session?',
+        formData: {
+            appid: wx.appId,
+            secret: wx.secret,
+            js_code: code,
+            grant_type: 'authorization_code'
+        }
     }
-    ctx.body = result
+
+    let result = await request(options).body;
+    console.log('token', result)
+    let token = qs.parse(result)
+
+    ctx.body = {
+        code: 200,
+        data: [{token: token}]
+    }
+
+    await next()
+
+    // request(options, function(err, response, body) {
+    //     if (err) {
+    //         ctx.body = {
+    //             code: 500,
+    //             data: err
+    //         }
+    //     } else {
+    //         ctx.body = {
+    //             code: 200,
+    //             data: response.data
+    //         }
+    //     }
+    // })
+
 }
 
