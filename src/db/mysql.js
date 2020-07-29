@@ -111,7 +111,7 @@ exports.deleteCommentById=(id)=> {
 }
 
 // 查询用户所有相册相片
-exports.findAllAlbumFile=()=> {
+exports.findAllPhoto=()=> {
     const _sql = 'select * from album;';
     return query(_sql)
 }

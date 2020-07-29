@@ -19,11 +19,23 @@ let ali_oss = {
 }
 
 
+// 获取所有照片
 exports.getAllPhoto = async (ctx, next) => {
-    ctx.body = {
-        code: 1,
-        message: 'sss'
-    }
+    await UserModal.findAllPhoto()
+        .then(res => {
+            ctx.body = {
+                code: 200,
+                message: '请求成功',
+                data: res
+            }
+        })
+        .catch(err => {
+            ctx.body = {
+                code: 500,
+                message: '获取照片失败',
+                data: [err]
+            }
+        })
 
     await next
 }
@@ -37,7 +49,7 @@ exports.getAllPhoto = async (ctx, next) => {
  */
 exports.uploadAlbum = async (ctx, next) => {
 
-    const file = ctx.request.body;
+    const {file} = ctx.request.body;
     console.log('文件---文件', file)
 
     // 图片上传
