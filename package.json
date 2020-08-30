@@ -33,8 +33,10 @@
     "mysql2": "^2.1.0",
     "request": "^2.88.2",
     "sequelize": "^6.3.0",
+    "superagent": "^6.0.0",
     "swagger-jsdoc": "^4.0.0",
-    "uninstall": "0.0.0"
+    "uninstall": "0.0.0",
+    "xss": "^1.0.8"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"

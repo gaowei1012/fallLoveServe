@@ -1,6 +1,6 @@
 const mysql = require('mysql')
 const {database} = require('../config/default')
-const {users, comment, album, article, video, reminders} = require('./init')
+const {users, comment, album, article, video, reminders, wxLogin } = require('./init')
 
 const pool = mysql.createPool({
     host        :   database.HOST,
@@ -41,6 +41,7 @@ createTable(album)
 createTable(article)
 createTable(video)
 createTable(reminders)
+createTable(wxLogin)
 
 // 用户注册
 exports.insterUserData = (val) => {
@@ -154,4 +155,16 @@ exports.deleteRemindersById=(id)=> {
 exports.insterReminders=(val)=> {
     const _sql = 'insert into reminders set title=?,content=?,create_at=?;'
     return query(_sql,val)
+}
+
+// 插入微信open_id,记录当前用户是否登陆
+exports.insterWxOpenId=(val) => {
+    const _sql = 'insert into wxLogin set open_id =?, create_at=?;'
+    return query(_sql, val)
+}
+
+// 查询当前用户是否注册
+exports.findWxLogin = (open_id) => {
+    const _sql = `select * from wxLogin where open_id='${open_id}';`
+    return query(_sql)
 }

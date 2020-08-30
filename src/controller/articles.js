@@ -14,7 +14,8 @@ const UserModal = require('../db/mysql')
  *         description: get all users
  */
 exports.createArticle = async ctx => {
-    const {title,content,create_at} = ctx.request.body;
+    const {title,content} = ctx.request.body;
+    let create_at = new Date()
     // 发表时间点暂时放在后端
     await UserModal.insterArticleData([title,content,create_at])
         .then(result => {

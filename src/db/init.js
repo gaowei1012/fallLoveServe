@@ -5,6 +5,15 @@
  *  --
  */
 
+const wxLogin = `
+    create table if not exists wxLogin(
+        id INT NOT NULL AUTO_INCREMENT,
+        open_id VARCHAR(100) NOT NULL COMMENT '微信 open_id',
+        create_at VARCHAR(100) NOT NULL COMMENT '用户创建时间',
+        PRIMARY KEY(id)
+    ) character set = utf8;
+`
+
 const users = `
     create table if not exists users(
         id INT NOT NULL AUTO_INCREMENT,
@@ -55,7 +64,6 @@ const video = `
         create_at VARCHAR(100) NOT NULL COMMENT '视频上传时间',
         PRIMARY KEY(id)
     ) character set = utf8;
-
 `
 
 const reminders = `
@@ -74,5 +82,6 @@ module.exports = {
     album,
     article,
     video,
-    reminders
+    reminders,
+    wxLogin,
 }
