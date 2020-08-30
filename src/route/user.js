@@ -6,6 +6,5 @@ router.post('/api/user/login', controller.login)
 router.post('/api/user/getCode', controller.getCode)
 router.post('/api/user/getUserInfo', controller.getUserInfo)
 router.post('/api/user/fotgetPassword', controller.fotgetPassword)
-// router.post('/api/user/wxLogin', controller.wxLogin)
 
 module.exports = router

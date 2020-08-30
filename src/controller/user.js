@@ -1,6 +1,6 @@
 const UserModal = require('../db/mysql');
 const co = require('co');
-const wx = require('../config/wx')
+const wx = require('../config/default')
 const request = require('request')
 const axios = require('axios')
 const qs = require('qs')
@@ -9,7 +9,7 @@ const qs = require('qs')
  * 注册
  * @param {*} ctx 
  */
-exports.register = async ctx => {
+exports.register = async (ctx, next) => {
     const {mobile,avatar,username,password} = ctx.request.body;
     let create_at = new Date();
     console.log('username', username)
@@ -26,6 +26,8 @@ exports.register = async ctx => {
                 message: '注册失败'
             }
         })
+
+    await next()
 }
 
 /**
@@ -92,50 +94,5 @@ exports.fotgetPassword = async ctx => {
         code: 1
     }
     ctx.body = result
-}
-
-/**
- * 微信登录
- * @param {*} ctx 
- */
-exports.wxLogin = async (ctx, next) => {
-    const {code} = ctx.request.body;
-
-    let options = {
-        method: 'POST',
-        url: 'https://api.weixin.qq.com/sns/jscode2session?',
-        formData: {
-            appid: wx.appId,
-            secret: wx.secret,
-            js_code: code,
-            grant_type: 'authorization_code'
-        }
-    }
-
-    let result = await request(options).body;
-    console.log('token', result)
-    let token = qs.parse(result)
-
-    ctx.body = {
-        code: 200,
-        data: [{token: token}]
-    }
-
-    await next()
-
-    // request(options, function(err, response, body) {
-    //     if (err) {
-    //         ctx.body = {
-    //             code: 500,
-    //             data: err
-    //         }
-    //     } else {
-    //         ctx.body = {
-    //             code: 200,
-    //             data: response.data
-    //         }
-    //     }
-    // })
-
 }
 
