@@ -46,6 +46,7 @@ app.use(require('./route/constellation').routes())
 app.use(require('./route/video').routes())
 app.use(require('./route/reminders').routes())
 app.use(require('./route/wxLogin').routes())
+app.use(require('./route/menu').routes())
 
 app.listen(port, () => {
     console.log(`http://${host}:${port}`)
