@@ -87,10 +87,11 @@ const admin_user = `
     ) character set = utf8;
 `
 
+// 文章点赞
 const great = `
     create table if not exists great(
         id INT NOT NULL AUTO_INCREMENT,
-        great_num VARCHAR(100) NOT NULL COMMENT '点赞数',
+        great_num VARCHAR(100) NOT NULL DEFAULT 1 COMMENT '点赞数',
         create_at VARCHAR(100) NOT NULL COMMENT '创建时间',
         PRIMARY KEY(id)
     ) character set = utf8;
