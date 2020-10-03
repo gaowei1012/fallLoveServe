@@ -1,6 +1,6 @@
 const mysql = require('mysql')
 const {database} = require('../config/default')
-const {users, comment, album, article, video, reminders, wxLogin } = require('./init')
+const {users, comment, album, article, video, reminders, wxLogin, admin_user } = require('./init')
 
 const pool = mysql.createPool({
     host        :   database.HOST,
@@ -42,6 +42,21 @@ createTable(article)
 createTable(video)
 createTable(reminders)
 createTable(wxLogin)
+createTable(admin_user)
+
+// 中后台管理系统 用户注册
+exports.adminRegister = (val) => {
+    const _sql = `insert into admin_user set username=?, password=?,create_at=?;`
+    return query(_sql, val)
+}
+
+// 中后台管理系统 用户登录
+exports.adminLogin = (username, password) => {
+    console.log('username', username)
+    console.log('password', password)
+    const _sql = `select * from admin_user where username="${username}" and password="${password}";`
+    return query(_sql)
+}
 
 // 用户注册
 exports.insterUserData = (val) => {

@@ -76,6 +76,17 @@ const reminders = `
     ) character set = utf8;
 `
 
+// 后台管理系统
+const admin_user = `
+    create table if not exists admin_user(
+        id INT NOT NULL AUTO_INCREMENT,
+        username VARCHAR(100) NOT NULL COMMENT '用户名',
+        password VARCHAR(100) NOT NULL COMMENT '密码',
+        create_at VARCHAR(100) NOT NULL COMMENT '创建时间',
+        PRIMARY KEY(id)
+    ) character set = utf8;
+`
+
 module.exports = {
     users,
     comment,
@@ -84,4 +95,5 @@ module.exports = {
     video,
     reminders,
     wxLogin,
+    admin_user,
 }
