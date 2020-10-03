@@ -87,6 +87,15 @@ const admin_user = `
     ) character set = utf8;
 `
 
+const great = `
+    create table if not exists great(
+        id INT NOT NULL AUTO_INCREMENT,
+        great_num VARCHAR(100) NOT NULL COMMENT '点赞数',
+        create_at VARCHAR(100) NOT NULL COMMENT '创建时间',
+        PRIMARY KEY(id)
+    ) character set = utf8;
+`
+
 module.exports = {
     users,
     comment,
@@ -96,4 +105,5 @@ module.exports = {
     reminders,
     wxLogin,
     admin_user,
+    great,
 }

@@ -1,6 +1,6 @@
 const mysql = require('mysql')
 const {database} = require('../config/default')
-const {users, comment, album, article, video, reminders, wxLogin, admin_user } = require('./init')
+const {users, comment, album, article, video, reminders, wxLogin, admin_user, great } = require('./init')
 
 const pool = mysql.createPool({
     host        :   database.HOST,
@@ -43,6 +43,7 @@ createTable(video)
 createTable(reminders)
 createTable(wxLogin)
 createTable(admin_user)
+createTable(great)
 
 // 中后台管理系统 用户注册
 exports.adminRegister = (val) => {
@@ -181,5 +182,23 @@ exports.insterWxOpenId=(val) => {
 // 查询当前用户是否注册
 exports.findWxLogin = (open_id) => {
     const _sql = `select * from wxLogin where open_id='${open_id}';`
+    return query(_sql)
+}
+
+// 创建点击数
+exports.insterGreat = (val) => {
+    const _sql = 'insert into great set great_num=?, create_at=?;'
+    return query(_sql, val)
+}
+
+// upadte 增加
+exports.updateGreat = (great_num, great_id) => {
+    const _sql = `update great set great_num=${great_num} where id=${great_id};`
+    return query(_sql)
+}
+
+// 查询当前用户该篇文章下的点赞数
+exports.findGreat = (great_id) => {
+    const _sql = `select * from great where id=${great_id};`
     return query(_sql)
 }

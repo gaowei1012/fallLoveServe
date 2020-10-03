@@ -49,6 +49,7 @@ app.use(require('./route/wxLogin').routes())
 app.use(require('./route/menu').routes())
 app.use(require('./route/admin').routes())
 app.use(require('./route/lottery').routes())
+app.use(require('./route/great').routes())
 
 app.listen(port, () => {
     console.log(`http://${host}:${port}`)
