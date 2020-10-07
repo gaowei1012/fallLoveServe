@@ -93,20 +93,31 @@ exports.eitdArticle = async ctx => {
  */
 exports.findeArticleData = async ctx => {
     const {id} = ctx.request.body;
-    await UserModal.findArticelById(id)
-        .then(result => {
+    try {
+        if (id !== undefined) {
+            await UserModal.findArticelById(id)
+            .then(result => {
+                ctx.body = {
+                    code: 200,
+                    message: 'Ok',
+                    data: result[0]
+                }
+            })
+            .catch(err => {
+                ctx.body = {
+                    code: 500,
+                    message: `ERROR: ${err}`
+                }
+            })
+        } else {
             ctx.body = {
-                code: 200,
-                message: 'ok',
-                data: result[0]
+                stateCode: 400,
+                message: 'id不能为空'
             }
-        })
-        .catch(err => {
-            ctx.body = {
-                code: 500,
-                message: `err: ${err}`
-            }
-        })
+        }
+    } catch (err) {
+        Promise.reject(err)
+    }
 }
 
 /**
