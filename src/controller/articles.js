@@ -136,7 +136,7 @@ exports.findeArticleData = async (ctx, next) => {
 /**
  * 获取所有文章
  */
-exports.searchArticle = async (ctx, next) => {
+exports.getAllArticle = async (ctx, next) => {
     await UserModal.findArticelAll()
         .then(result => {
             ctx.body = {

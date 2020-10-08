@@ -259,7 +259,7 @@ exports.findeArticleData = function _callee4(ctx, next) {
  */
 
 
-exports.searchArticle = function _callee5(ctx, next) {
+exports.getAllArticle = function _callee5(ctx, next) {
   return regeneratorRuntime.async(function _callee5$(_context5) {
     while (1) {
       switch (_context5.prev = _context5.next) {
