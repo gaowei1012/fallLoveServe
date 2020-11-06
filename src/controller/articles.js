@@ -1,5 +1,4 @@
 
-const { ne } = require('sequelize/types/lib/operators');
 const UserModal = require('../db/mysql')
 /* 发表文章 */
 exports.createArticle = async (ctx, next) => {
