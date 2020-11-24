@@ -10,8 +10,8 @@ const multer = require('multer')
 
 let client = new OSS({
     region: 'oss-cn-hangzhou',
-    accessKeyId: 'LTAI4G7Jkx1s96pNouscKbcw',
-    accessKeySecret: 'vraBTbap66nzcHSrJTqMVZ7y1kpIb1'
+    accessKeyId: 'LTAI4G7*******ouscKbcw',
+    accessKeySecret: 'vraBTbap6*******7y1kpIb1'
 })
 
 let ali_oss = {
